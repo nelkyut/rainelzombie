@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: 'Luckiest Guy', cursive;
-      background-image: url('https://i.ibb.co/LkSPWmK/bg.jpg');
+      background-image: url('https://i.postimg.cc/Bb4FLRcn/bg.jpg');
       background-size: cover;
       background-repeat: no-repeat;
     }
@@ -60,7 +60,7 @@
 
   <div class="energy-bar">
     Energy: <span id="energy">0</span>
-    <img src="https://i.ibb.co/ByV8BS3/heart.png" class="heart" />
+    <img src="https://i.postimg.cc/DZBhj1qq/heart.png" class="heart" />
   </div>
 
   <div class="game-container" id="grid"></div>
@@ -70,9 +70,9 @@
     const energyEl = document.getElementById("energy");
     let energy = 0;
 
-    // ✅ Secure working image links (HTTPS, Imgbb)
-    const rainelImage = "https://i.ibb.co/JpvDdDJ/rainel.png";
-    const monsterImage = "https://i.ibb.co/Sf0PLN2/monster.png";
+    // ✅ Working image links (Postimages)
+    const rainelImage = "https://i.postimg.cc/HnCrFJBN/rainel.png";
+    const monsterImage = "https://i.postimg.cc/j5fTpsL1/monster.png";
 
     const rows = 5;
     const cols = 9;
@@ -86,7 +86,7 @@
         grid.appendChild(cell);
         cells.push({ cell, row, col });
 
-        // Defender placement
+        // Place defender on click
         cell.addEventListener("click", () => {
           if (energy >= 10 && !cell.hasChildNodes()) {
             const defender = document.createElement("img");
@@ -104,6 +104,7 @@
       energyEl.textContent = energy;
     }
 
+    // Auto add energy every 3 seconds
     setInterval(() => {
       energy += 5;
       updateEnergy();
@@ -139,12 +140,13 @@
           nextCell.appendChild(monster);
           col--;
         } else {
+          // Defender is here — Stop for now
           clearInterval(moveInterval);
         }
       }, 1000);
     }
 
-    setInterval(spawnMonster, 5000); // Spawn every 5 seconds
+    setInterval(spawnMonster, 5000); // Spawn monster every 5 seconds
   </script>
 </body>
 </html>
